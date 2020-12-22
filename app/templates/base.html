@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	{% load static %}
+    <title> {% block title %}{% endblock %}</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <script>
+        addEventListener("load", function() {
+            setTimeout( 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+   </script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+	<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <!-- //Meta tag Keywords -->
+    <!-- Custom-Files -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+    <!-- Style-CSS -->
+    <!-- font-awesome-icons -->
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <!-- //font-awesome-icons -->
+    <!-- /Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,600,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700" rel="stylesheet">
+    <!-- //Fonts -->
+</head>
+
+<body>
+    <!-- mian-content -->
+    <div class="main-content" id="home">
+        <div class="layer">
+            <!-- header -->
+            <header>
+                <div class="container-fluid px-lg-5">
+					<div class="row order-info">
+                    <div class="middle mt-sm-3 col-sm-6 text-left">
+
+
+                    </div>
+                    
+                </div>
+                    <!-- nav -->
+                    {% if request.user.is_authenticated %}
+                    <a style="color:black;" href="{% url 'user' %}"><i class="fa fa-user-circle fa-3x" style="float: right; padding: 17px;background-color: #a5b5ca00;"></i></a>
+                    <a href="{% url 'user' %}"><p style="float: right; padding: 28px; color:#b4e6f5f2;"> Name: {{ user.username }}</p></a>
+                    {% endif %}
+                    <nav class="pt-4 d-lg-flex">
+                        <div id="logo">
+                            <h1> <a href="{% url 'home' %}">RGPV Hacks<br></a></h1>
+                        </div>
+                        <label for="drop" class="toggle">Menu</label>
+                        <input type="checkbox" id="drop" />
+                        <ul class="menu mt-2 ml-auto">
+                            <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about us' %}" class="scroll">About</a></li>
+                            <li>
+                                <!-- First Tier Drop Down -->
+                                <label for="drop-2" class="toggle">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
+                                <a href="#">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                                <input type="checkbox" id="drop-2" />
+                                <ul class="inner-ul">
+
+                                    <li><a class="scroll" href="{% url 'home' %}">Gallery</a></li>
+<!--                                    <li><a href="{% url 'book' %}" class="scroll">Notes</a></li>-->
+<!--                                    <li><a href="#stats" class="scroll">Buy Books</a></li>-->
+<!--                                    <li><a href="">Sell Books</a></li>-->
+                                    <li><a href="{% url 'home' %}#team" class="scroll">Team</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'login' %}" >Login</a></li>
+
+                            {% if request.user.is_authenticated %}
+                            <li><a href="{% url 'logout' %}" class="scroll">Logout</a></li>
+                            {% endif %}
+                            {% if not request.user.is_authenticated %}
+                            <li><a href="{% url 'singup' %}"> SingUp</a></li>
+                            {% endif %}
+
+                        </ul>
+                    </nav>
+                    <!-- //nav -->
+                </div>
+            </header>
+            <!-- //header -->
+            <div class="container">
+                <!-- /banner -->
+                <div class="banner-info-w3layouts text-center">
+                    <h3>Help people even when you know they can't help you back</h3>
+                    <div class="read-more">
+                        <a href="{% url 'about us' %}" class="read-more scroll">Read More </a> </div>
+                </div>
+
+            </div>
+            <!-- //banner -->
+        </div>
+    </div>
+    <!--// mian-content -->
+
+{% block body %}
+
+{% endblock %}
+ <!-- footer -->
+    <footer class="footer-content">
+        <div class="layer footer-1">
+            <div class="container-fluid">
+                <div class="row footer-top-inner-w3ls">
+
+                    <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
+                        <div class="footer-w3pvt">
+                            <h3 class="mb-3 w3pvt_title">Office Hours</h3>
+                            <hr>
+                            <ul class="list-info-w3pvt last-w3ls-contact mt-lg-4">
+                                <li>
+                                    <p> Monday - Friday 9.00 am - 8.00 pm</p>
+
+                                </li>
+                                <li class="my-2">
+                                    <p>Saturday 9.00 am - 5.00 pm</p>
+
+                                </li>
+                                <li class="my-2">
+                                    <p>Sunday 10.00 am - 2.00 pm</p>
+
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-lg-0 mt-5">
+                        <div class="footer-w3pvt">
+                            <h3 class="mb-3 w3pvt_title">Newsletter</h3>
+                            <hr>
+
+                        <div class="footer-text">
+                            <p>By subscribing to our mailing list you will always get latest notes and updates from us.</p>
+                            <form action="#" method="post">
+                                <input type="email" name="Email" placeholder="Enter your email..." required="">
+                                <button class="btn1 btn"><span class="fa fa-paper-plane-o" aria-hidden="true"></span></button>
+                                <div class="clearfix"> </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                
+                <p class="copy-right-grids text-li text-center my-sm-4 my-4">© 2019 Informing. All Rights Reserved | Design by
+                    <strong> Team MASS <span style="color: red;">❤</span></strong>
+                </p>
+                
+                <div class="w3ls-footer text-center mt-4">
+                    <ul class="list-unstyled w3ls-icons">
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-facebook-f"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-twitter"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-dribbble"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-vk"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="move-top text-right"><a href="#home" class="move-top"> <span class="fa fa-angle-up  mb-3" aria-hidden="true"></span></a></div>
+            </div>
+            <!-- //footer bottom -->
+        </div>
+    </footer>
+    <!-- //footer -->
+
+
+</body>
+

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}RGPV hacks | Previous Year Paper {% endblock %}
+{% block body %}
+{% load static %}
+{% if paper %}
+<center style="padding:2%;">
+    <h1 style="font-family:initial;">Notes</h1>
+</center>
+    <div class="table-responsive" style="margin:4%">
+       <table class="table table-borderless table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Notes</th>
+              <th scope="col">Semster</th>
+              <th scope="col">Branch</th>
+              <th scope="col">Author</th>
+
+              <th scope="col">Download</th>
+            </tr>
+          </thead>
+         <tbody>
+         {% for i in paper %}
+
+            <tr>
+                <td><a href="{% url 'download' '0' i.id %}">{{ i.name }}</a></td>
+              <td>{{ i.sem }}</td>
+              <td>{{ i.branch }}</td>
+              <td>{{ i.user }}</td>
+
+                <td><a href="{% url 'download' '0' i.id %}"><button class="btn btn-primary">Download</button></a></td>
+            </tr>
+         {% endfor %}
+         </tbody>
+       </table>
+    </div>
+{% endif %}
+{% if not paper %}
+<div style="margin:4%;">
+    <h1>Cooming soon..............</h1><br>
+    <p style="margin-top: 20px;">You can help us By provide us your notes     <a href="{% url 'q_paper' %}">Add Question Paper</a></p> <br>
+    <h1><strong>Thank You</strong></h1>
+
+    <i class="fa fa-inbox fa-2x" style="padding-top:4%;" aria-hidden="true"> mail us to:<br> <a
+            href="mailto: helperteam007@gmail.com">helperteam007@gmail.com</a></i>
+</div>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<head>
+    <style>
+        .btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+    </style>
+</head>
+<section style="background-color: #403a3a;">
+<center>
+<form action="" method="post">
+
+    {% csrf_token %}
+
+
+
+<!-- Auto width -->
+<button style="margin:100px; " onclick="myFunction()" class="btn"><i class="fa fa-download"></i> Order Book</button>
+
+<!-- Full width -->
+
+
+</form>
+
+</section>
+
+<script>
+function myFunction() {
+    alert('order confirmed')
+  location.replace("{% url 'home'  %}")
+}
+</script>
+
+</center>
+
+
+{% endblock %}

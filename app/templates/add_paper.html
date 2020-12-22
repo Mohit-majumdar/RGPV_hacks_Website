@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}RGPV hack| Add Paper{% endblock %}
+{% block body %}
+    <form method="post" enctype="multipart/form-data" style="padding:11%">
+        {% csrf_token %}
+        <h1> Add Question paper</h1>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Subject Name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="note" aria-describedby="emailHelp" placeholder="Enter Subject name" required>
+
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Branch</label>
+    <select name="bid" required>
+        <option>branch</option>
+        {% for i in branch %}
+        <option value="{{ i.id }}">{{ i.branch }}</option>
+        {% endfor %}
+    </select>
+
+  </div>
+        <div class="form-group">
+    <label for="exampleInputEmail1">Semester</label>
+    <select name="sid" required>
+        <option>Semester</option>
+        {% for i in sem %}
+        <option value="{{ i.id }}">{{ i.sem }}</option>
+        {% endfor %}
+    </select>
+
+  </div>
+        <div class="form-group">
+    <label for="exampleInputEmail1">Question Paper</label>
+    <input type="file" class="form-control" id="exampleInputEmail1" name="pdf" aria-describedby="emailHelp" required>
+    <small id="emailHelp" class="form-text text-muted">File format must be pdf .</small>
+  </div>
+         <div class="form-group">
+    <label for="exampleInputEmail1">Paper Year</label>
+    <input type="number" class="form-control" id="exampleInputEmail1" name="year" aria-describedby="emailHelp" placeholder="Enter Year" required>
+
+  </div>
+  <button type="submit" value="Add Note" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

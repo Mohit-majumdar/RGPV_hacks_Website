@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} SingUp {% endblock %}
+{% block body %}
+<script type="text/javascript">
+
+
+</script>
+<head>
+	<title>Login V19</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<div >
+
+	<div class="limiter" >
+		<div class="container-login100" >
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50" style="background-color: #5c9dc340">
+
+				<form class="login100-form validate-form" method="post">
+					{% csrf_token %}
+					<span class="login100-form-title p-b-33">
+						Create Account
+
+					</span>
+				
+
+					{% if erorr %}
+				<script>
+                    alert('username already exist')
+                </script>
+				{% endif %}
+				<script>
+					function password() {
+						var pass =document.getElementById("psw").value;
+						var confirm = document.getElementById("confirm").value;
+						if(pass!=confirm){
+							document.getElementById("confirm").style.color = "red";
+							
+							
+
+						}
+						else
+						{
+							document.getElementById("confirm").style.color="green";
+						}
+						
+					}
+					function check() {
+						var pass =document.getElementById("psw").value;
+						var confirm = document.getElementById("confirm").value;
+						if (pass!=confirm) {
+							alert("password are not matched");
+						}
+
+					}
+<!--					function show() {-->
+
+<!--					var t document.getElementById("psw").attributes["type"] = "text";-->
+<!--					alert("bhg bsdk");-->
+<!--					console.log(t);-->
+
+<!--					}-->
+
+				</script>
+
+					<div >
+						<input class="input100 " type="text" style="background-color: azure"  name="user" placeholder="Username" required >
+						<span class="focus-input100-1"></span>
+
+                    <input class="input100 " type="email" style="background-color: azure" name="email" placeholder="Email" required >
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+						<div class="wrap-input100 rs1  validate-input"  data-validate="not more then 10" >
+						<input class="input100" type="tel" name="mobile" placeholder="number" required >
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+                    <div class="wrap-input100 rs1 validate-input " data-validate="Password is required">
+						<input class="input100" id="psw" type="password" name="pass" placeholder="Create Password" required >
+
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+					 <div class="wrap-input100  rs1 validate-input " data-validate="Password is required">
+						<input class="input100 col-12" oninput="password()" id="confirm" type="password" name="confirm" placeholder="Confirm password"  >
+
+						 <span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+
+					<div class="container-login100-form-btn m-t-20 ">
+						<button onclick="check()" class="login100-form-btn">
+							create account
+						</button>
+					</div>
+
+
+
+
+				</form>
+				{% if password %} #for worng password is password not matched
+				<script>
+					alert("password not matched!")
+				</script>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+<!--<html>-->
+<!--{% load static %}-->
+<!--<head>-->
+<!--     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">-->
+<!--    &lt;!&ndash; Bootstrap-Core-CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />-->
+<!--    &lt;!&ndash; Style-CSS &ndash;&gt;-->
+<!--    &lt;!&ndash; font-awesome-icons &ndash;&gt;-->
+<!--    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="dash" style="background:#444a2a;-->
+<!--padding: -3%;box-shadow: 0px 8px #0000003d;-->
+<!--position: sticky;width: 100%;-->
+<!--height:14%;-->
+<!--}">-->
+<!--            {% if request.user.is_authenticated %}-->
+<!--                    <i class="fa fa-user-circle fa-2x" style="float: right; padding: 17px;background-color: lightsteelblue;"></i>-->
+<!--                    <p style="float: right; padding: 28px; color:#b4e6f5f2;"> Name: {{ request.user.username }}</p>-->
+<!--                    {% endif %}-->
+<!--                 <nav class="pt-4 d-lg-flex" >-->
+
+
+<!--                        <div id="logo">-->
+<!--                            <h1> <a href="{% url 'home' %}">RGPV Hacks<br></a></h1>-->
+<!--                        </div>-->
+<!--                        <label for="drop" class="toggle">Menu</label>-->
+<!--                        <input type="checkbox" id="drop" />-->
+<!--                        <ul class="menu mt-2 ml-auto">-->
+<!--                            <li class="active"><a href="{% url 'home' %}">Home</a></li>-->
+<!--                            <li><a href="{% url 'home' %}" class="scroll">About</a></li>-->
+<!--                            <li>-->
+<!--                                &lt;!&ndash; First Tier Drop Down &ndash;&gt;-->
+<!--                                <label for="drop-2" class="toggle">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span> </label>-->
+<!--                                <a href="#">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span></a>-->
+<!--                                <input type="checkbox" id="drop-2" />-->
+<!--                                <ul class="inner-ul">-->
+<!--                                    <li><a class="scroll" href="{% url 'home' %}">Gallery</a></li>-->
+<!--&lt;!&ndash;                                    <li><a href="{% url 'book' %}" class="scroll">Notes</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <li><a href="#stats" class="scroll">Buy Books</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <li><a href="">Sell Books</a></li>&ndash;&gt;-->
+<!--                                    <li><a href="{% url 'home' %}#team" class="scroll">Team</a></li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                            <li><a href="{% url 'login' %}" >Login</a></li>-->
+
+<!--                            {% if request.user.is_authenticated %}-->
+<!--                            <li><a href="{% url 'logout' %}" class="scroll">Logout</a></li>-->
+<!--                            {% endif %}-->
+<!--                            {% if not request.user.is_authenticated %}-->
+<!--                            <li><a href="{% url 'singup' %}"> SingUp</a></li>-->
+<!--                            {% endif %}-->
+
+<!--                        </ul>-->
+<!--                    </nav>-->
+<!--    </div>-->
+
+{% load static %}
+{% block title %}Rgpv Notes- DashBoard{% endblock %}
+{% block body %}
+
+<div class="container" style="padding : 4%">
+    <div class="row" style="padding: 4%">
+        <div class="col" style="padding:4%; background-color :#80808038;">
+           <i class="fa fa-user-circle fa-5x"></i>
+            <h3 style="margin-left:9px">{{request.user.username}}</h3>
+        </div>
+        <div class="col" style="background-color :#80808038;">
+            <a href="{% url 'add_note' %}">  <button class="btn btn-primary " style="float: right; margin:4%;" >Add Notes</button></a><br><br><br><br>
+            <a href="{% url 'q_paper' %}">  <button class="btn btn-primary-red " style="float: right; margin:4%;" >Add Question paper</button></a>
+
+        </div>
+
+    </div>
+    {% if note %}
+    <div>
+        <center>
+            <h2>Your Notes</h2>
+        </center>
+        <div class="table-responsive" style="margin:4%">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+
+              <th scope="col">Subject</th>
+              <th scope="col">Semster</th>
+              <th scope="col">Branch</th>
+              <th scope="col">Downloads</th>
+                <th scope="col">Date</th>
+
+            </tr>
+          </thead>
+            <tbody>
+            {% for i,j in notes %}
+            <tr>
+                <td><a href="{% url 'download' i.id 0 %}">{{ i.name }}</a></td>
+              <td>{{ i.sem }}</td>
+              <td>{{ i.branch }}</td>
+                <td>{{j}}</td>
+                <td>{{ i.date }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% if not note %}
+<center>
+    <h1>Hello, WelCome</h1><br>
+    <p> Currently you Have No Notes uploads.</p>
+</center>
+{% endif %}
+
+
+{% endblock %}
