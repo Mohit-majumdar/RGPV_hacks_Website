@@ -4,8 +4,36 @@
 {% block body %}
 
 
+
+<script>
+	function myFunction(id) {
+		var di = document.getElementById(id)
+		console.log()
+		if (di.style.backgroundColor === "f7fafa"){
+			di.style.backgroundColor = "grey"
+		}
+		else{
+			di.style.backgroundColor = "f7fafa";
+		}
+		
+		var el = document.getElementById(id + "_inside");
+		
+		if(window.screen.width < 800){
+
+			if (el.style.display === "none"){
+				el.style.display = "block"
+				
+			}
+			else{
+				el.style.display = "none";
+			}
+
+		}
+		
+}
+</script>
 <!-- features -->
-<section class="banner-bottom py-5" onload="myFunction()" id="services">
+<section class="banner-bottom py-5"  id="services">
 
 	   
 	
@@ -20,16 +48,21 @@
 						<span class="fa fa-crosshairs"></span>
 					</div>
 					<div class="col-10">
-						<h4 class="mt-md-0 my-2">
+						<h4 id="civil" onclick="myFunction(this.id)" class="mt-md-0 my-2">
 							<font color="#0eca00">Civil Engineering</font>
 						</h4>
-						<ul>
+						
+							<div id="civil_inside">
+								<ul>
+								{% for i in sem %}
+									<li><a href="{% url 'notes' '2' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semester: {{i.sem}}</a></li>
+								{% endfor %}
+								</ul>
+							</div>
 
-							{% for i in sem %}
-							<li><a href="{% url 'notes' '2' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semster: {{i.sem}}</a></li>
-							{% endfor %}
+							
 
-						</ul>
+						
 					</div>
 				</div>
 			</div>
@@ -39,16 +72,22 @@
 						<span class="fa fa-laptop"></span>
 					</div>
 					<div class="col-10">
-						<h4 class="mt-md-0 my-2">
+						<h4 id="computer" onclick="myFunction(this.id)" class="mt-md-0 my-2">
 							<font color=rebeccapurple">Computer Science Engineering (CSE)</font>
 						</h4>
-						<ul>
+						
+							<div id="computer_inside">
+								<ul>
+								{% for i in sem %}
+							
+								<li><a href="{% url 'notes' '1' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semester: {{i.sem}}</a></li>
+									{% endfor %}
+								</ul>
+							</div>
 
-							{% for i in sem %}
-							<li><a href="{% url 'notes' '1' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semster: {{i.sem}}</a></li>
-							{% endfor %}
+							
 
-						</ul>
+						
 					</div>
 				</div>
 			</div>
@@ -58,16 +97,17 @@
 						<span class="fa fa-cog"></span>
 					</div>
 					<div class="col-10">
-						<h4 class="mt-md-0 my-2">
+						<h4 id="Mech" onclick="myFunction(this.id)" class="mt-md-0 my-2">
 							<font color=rebeccapurple">Mechanical Engineering</font>
 						</h4>
-						<ul>
-
-							{% for i in sem %}
-							<li><a href="{% url 'notes' '3' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semster: {{i.sem}}</a></li>
-							{% endfor %}
-
-						</ul>
+						
+							<div id="Mech_inside">
+								<ul>
+								{% for i in sem %}
+									<li><a href="{% url 'notes' '3' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semester: {{i.sem}}</a></li>
+								{% endfor %}
+								</ul>	
+							</div>
 					</div>
 				</div>
 			</div>
@@ -79,16 +119,20 @@
 						<span class="fa fa-bolt"></span>
 					</div>
 					<div class="col-10">
-						<h4 class="mt-md-0 my-2">
+						<h4 id="EE" onclick="myFunction(this.id)" class="mt-md-0 my-2">
 							<font color=rebeccapurple">Electrical Engineering </font>
 						</h4>
-						<ul>
+						
+							<div id="EE_inside">
+								<ul>
+								{% for i in sem %}
+								<li><a href="{% url 'notes' '3' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semester: {{i.sem}}</a></li>
+								{% endfor %}
+								</ul>
+							</div>
+							
 
-							{% for i in sem %}
-							<li><a href="{% url 'notes' '3' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semster: {{i.sem}}</a></li>
-							{% endfor %}
-
-						</ul>
+						
 					</div>
 				</div>
 			</div>
@@ -98,16 +142,21 @@
 						<span class="fa fa-microchip"></span>
 					</div>
 					<div class="col-10">
-						<h4 class="mt-md-0 my-2">
+						<h4 id="EC" onclick="myFunction(this.id)" class="mt-md-0 my-2">
 							<font color=rebeccapurple">Electronic Communication</font>
 						</h4>
-						<ul>
+						
+							<div id="EC_inside">
+								<ul>
+								{% for i in sem %}
+									<li><a href="{% url 'notes' '5' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semester: {{i.sem}}</a></li>
+								{% endfor %}
+							</ul>
 
-							{% for i in sem %}
-							<li><a href="{% url 'notes' '5' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semster: {{i.sem}}</a></li>
-							{% endfor %}
+							</div>
+							
 
-						</ul>
+						
 					</div>
 				</div>
 			</div>
@@ -217,7 +266,7 @@
 	
 		<div class="container py-sm-4">
 			<div class="heading-grid text-center">
-				<h3 style="color:black; font: bold; font: outline; text-shadow: black;" class="tittle text-center heading mb-5" style="margin-top: 10px;">Privious Years Papers </h3>
+				<h3 style="color:black; font: bold; font: outline; text-shadow: black;" class="tittle text-center heading mb-5" style="margin-top: 10px;">Previous Years Papers </h3>
 			</div>
 			<div class="row">
 				<div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
@@ -226,15 +275,18 @@
 							<span class="fa fa-crosshairs"></span>
 						</div>
 						<div class="col-10">
-							<h4 class="mt-md-0 my-2">
+							<h4 id = "pCivil" onclick="myFunction(this.id)" class="mt-md-0 my-2">
 								<font color="#0eca00">Civil Engineering</font>
 							</h4>
 							<ul>
+								<div id="pCivil_inside">
+									{% for i in sem %}
+									<li><a href="{% url 'paper' '2' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semester: {{i.sem}}</a></li>
+									{% endfor %}
 	
-								{% for i in sem %}
-								<li><a href="{% url 'paper' '2' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semster: {{i.sem}}</a></li>
-								{% endfor %}
-	
+
+								</div>
+								
 							</ul>
 						</div>
 					</div>
@@ -245,14 +297,18 @@
 							<span class="fa fa-laptop"></span>
 						</div>
 						<div class="col-10">
-							<h4 class="mt-md-0 my-2">
+							<h4 id="pComputer" onclick="myFunction(this.id)"  class="mt-md-0 my-2">
 								<font color=rebeccapurple">Computer Science Engineering (CSE)</font>
 							</h4>
 							<ul>
+								<div id="pComputer_inside">
+									{% for i in sem %}
+									<li><a href="{% url 'paper' '1' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semester: {{i.sem}}</a></li>
+									{% endfor %}
+
+								</div>
 	
-								{% for i in sem %}
-								<li><a href="{% url 'paper' '1' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semster: {{i.sem}}</a></li>
-								{% endfor %}
+								
 	
 							</ul>
 						</div>
@@ -264,15 +320,18 @@
 							<span class="fa fa-cog"></span>
 						</div>
 						<div class="col-10">
-							<h4 class="mt-md-0 my-2">
+							<h4 id="pMech" onclick="myFunction(this.id)"  class="mt-md-0 my-2">
 								<font color=rebeccapurple">Mechanical Engineering</font>
 							</h4>
 							<ul>
-	
-								{% for i in sem %}
+								<div id="pMech_inside">
+									{% for i in sem %}
 							
-								<li><a href="{% url 'paper' '3' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semster: {{i.sem}}</a></li>
+								<li><a href="{% url 'paper' '3' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semester: {{i.sem}}</a></li>
 								{% endfor %}
+								</div>
+	
+								
 	
 							</ul>
 						</div>
@@ -286,14 +345,17 @@
 							<span class="fa fa-bolt"></span>
 						</div>
 						<div class="col-10">
-							<h4 class="mt-md-0 my-2">
+							<h4 id="pEE" onclick="myFunction(this.id)"  class="mt-md-0 my-2">
 								<font color=rebeccapurple">Electrical Engineering </font>
 							</h4>
 							<ul>
+								<div id="pEE_inside">
+									{% for i in sem %}
+									<li><a href="{% url 'paper' '3' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semester: {{i.sem}}</a></li>
+									{% endfor %}
+								</div>
 	
-								{% for i in sem %}
-								<li><a href="{% url 'paper' '3' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semster: {{i.sem}}</a></li>
-								{% endfor %}
+								
 	
 							</ul>
 						</div>
@@ -305,14 +367,17 @@
 							<span class="fa fa-microchip"></span>
 						</div>
 						<div class="col-10">
-							<h4 class="mt-md-0 my-2">
-								<font color=rebeccapurple">Electronic Communication</font>
+							<h4 id="pEC" onclick="myFunction(this.id)"  class="mt-md-0 my-2">
+								<font color=rebeccapurple">Electronic & Communication (EC)</font>
 							</h4>
 							<ul>
+								<div id="pEC_inside">
+									{% for i in sem %}
+									<li><a href="{% url 'paper' '5' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semester: {{i.sem}}</a></li>
+									{% endfor %}
+								</div>
 	
-								{% for i in sem %}
-								<li><a href="{% url 'paper' '5' i.id %}" id="mech" name="mech" style="color: rgb(0, 132, 247);" >Semster: {{i.sem}}</a></li>
-								{% endfor %}
+								
 	
 							</ul>
 						</div>
@@ -339,7 +404,7 @@
 				</div>
 				<p class="my-sm-4 mt-2 mb-4">
 					<h5>
-						<font color="#1e1e1e">Our motive to do something for somebody in order to be useful or to make
+						<font color="#1e1e1e">Our motive is to do something for somebody in order to be useful or to make
 							something easier for him/her.to give or provide necessary to accoumplish task or satisfy a
 							need.<br><br>
 
@@ -403,7 +468,7 @@
 <!-- //stats -->
 
 <!-- Gallery -->
-<section style="background-color:#f5f5f5" class="gallery py-5" id="gallery">
+<section  id="gale" style="background-color:#f5f5f5" class="gallery py-5" id="gallery">
 	<div class="container py-md-5">
 		<div class="header text-center">
 			<h3 style="color:#0f0f0f" class="tittle mb-lg-5 mb-3">Our Gallery</h3>

@@ -21,7 +21,10 @@ urlpatterns = [
     url(r'^addnote/$',add_note,name="add_note"),
     url(r'add_paper/$',add_paper,name="q_paper"),
     url(r'^aboutUs/$',aboutus,name= "about us"),
-    url(r'test',test)
+    url(r'test',test),
+    url(r'forgetpassward/$',forget_password, name='frogetPass'),
+    url(r'enter_otp/$',enter_opt,name="enter_otp"),
+    url(r'^enter_otp/enter_new_passward/$',enter_new_passward,name="enter_new_passward")
 
 
 ] + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

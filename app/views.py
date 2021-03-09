@@ -7,8 +7,10 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.http import HttpResponse
 from wsgiref.util import FileWrapper
+from random import randint
 
-
+otp = 0
+fuser = None
 # Create your views here.
 def home(request):  # For home page
 
@@ -101,8 +103,15 @@ def Login(request):
     if request.method == 'POST':
         n = request.POST['user']
         p = request.POST['pass']
+        
+        print("@" in n)
+        if '@' in n:
 
-        user = authenticate(username=n, password=p)
+            user = authenticate(email=n, password=p)
+
+        else:
+            user = authenticate(username=n,password=p)
+        print(user)
 
         if user:
             login(request, user)
@@ -288,6 +297,56 @@ def test(request):
 
     return HttpResponse("password "+str(user.password))
 
+
+""" froget password functionality"""
+def forget_password(request):
+    user_not_found = False
+    if request.method == "POST":
+        email_ = request.POST["email"]
+
+        user = User.objects.filter(email = email_).first()
+        if user:
+            global otp,fuser
+            otp = randint(1000,9999)
+            from_E = settings.EMAIL_HOST_USER   
+            sub = "Your OTP "
+            msg = EmailMultiAlternatives(sub,body=f"Your otp is {otp}",from_email= from_E,
+            to = [email_])
+            msg.send()
+            fuser = user
+            
+            
+            return redirect("enter_otp")
+
+        else:
+            user_not_found = True
+        
+    return render(request,"forget_passward.html",{"usernot":user_not_found})
+
+
+def enter_opt(request):
+    global otp
+    worngOtp = False
+    if request.method == "POST":
+        uOtp = request.POST['otp']
+        if int(uOtp) == otp:
+            
+            return redirect("enter_new_passward")
+        else:
+            worngOtp = True
+            
+    return render(request,"otp.html",{"worngotp":worngOtp})
+
+
+def enter_new_passward(request):
+    if request.method == "POST":
+        pasw = request.POST['pass']
+        fuser.set_password(pasw)
+        fuser.save()
+        
+
+        return redirect('login')
+    return render(request,"enter_password.html")
 
 
 

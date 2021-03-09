@@ -76,13 +76,13 @@
 						}
 
 					}
-<!--					function show() {-->
+// 					function show() {
 
-<!--					var t document.getElementById("psw").attributes["type"] = "text";-->
-<!--					alert("bhg bsdk");-->
-<!--					console.log(t);-->
+// 					var t document.getElementById("psw").attributes["type"] = "text";-->
+// 					alert("");-->
+// 					console.log(t);-->
 
-<!--					}-->
+// <!--					}-->
 
 				</script>
 
@@ -101,17 +101,27 @@
 					</div>
 
                     <div class="wrap-input100 rs1 validate-input " data-validate="Password is required">
-						<input class="input100" id="psw" type="password" name="pass" placeholder="Create Password" required >
-
+						<input class="input100" id="psw" type="password" value="" name="pass" placeholder="Create Password" required ><center><input type="checkbox" onclick="myFunction()">Show</center>
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
+						<script>
+ 							 function myFunction() {
+   							 var x = document.getElementById("psw");
+  						     if (x.type === "password") {
+      						 x.type = "text";
+							    } else {
+    							  x.type = "password";
+  									  }
+ 							    }
+						</script>
 					</div>
+
 
 					 <div class="wrap-input100  rs1 validate-input " data-validate="Password is required">
 						<input class="input100 col-12" oninput="password()" id="confirm" type="password" name="confirm" placeholder="Confirm password"  >
 
 						 <span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
+						 <span class="focus-input100-2"></span>
 					</div>
 
 
