@@ -1,0 +1,9 @@
+touch .gitignore
+git init
+git add .
+git commit -m "Initial commit"
+git status #just to see
+
+git remote add orign <ssh url.git>
+
+git push orign master
