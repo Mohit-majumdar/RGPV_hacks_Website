@@ -1,0 +1,62 @@
+@media only screen and (max-width: 800px)  {
+	#civil_inside,
+	#computer_inside,
+	#Mech_inside,
+	#EE_inside,
+	#EC_inside,
+	#pEC_inside,
+	#pEE_inside,
+	#pMech_inside,
+	#pComputer_inside,
+	#pCivil_inside
+
+	{
+
+		display: none;
+		background-color: #daeef17a;
+	}
+	#app{
+		display: none;
+
+	}
+	#gale{
+		display: none;
+	}
+	#appButton{
+	
+	}
+	#civil,
+	#computer,
+	#Mech,
+	#EE,
+	#EC,
+	#pCivil,
+	#pComputer,
+	#pMech,
+	#pEE,
+	#pEC{
+		
+		display: -ms-flexbox;
+		
+		box-sizing: content-box;
+		flex-direction: column;
+		padding: 5px;
+		text-align: center;
+		background-color: #f7fafa;
+		
+	}
+		
+	
+
+	}
+@media only screen and (min-width: 800px){
+	#civil_inside,
+	#computer_inside,
+	#Mech_inside,
+	#EE_inside,
+	#EC_inside{
+		display: block;
+	}
+}
+
+	
